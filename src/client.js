@@ -63,11 +63,11 @@ class Client {
     this.token = options.token;
     let defaultServiceHost;
     if (this.sandbox) {
-      defaultServiceHost = 'sandbox.evernote.com';
+      defaultServiceHost = 'http://sandbox.evernote.com';
     } else if (this.china) {
-      defaultServiceHost = 'app.yinxiang.com';
+      defaultServiceHost = 'https://app.yinxiang.com';
     } else {
-      defaultServiceHost = 'www.evernote.com';
+      defaultServiceHost = 'https://www.evernote.com';
     }
     this.serviceHost = options.serviceHost || defaultServiceHost;
   }
@@ -151,7 +151,7 @@ class Client {
   }
 
   getEndpoint(path) {
-    let url = 'https://' + this.serviceHost;
+    let url = this.serviceHost;
     if (path) {
       url = `${url}/${path}`;
     }
